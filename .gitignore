@@ -42,3 +42,10 @@
 *.exe
 *.out
 *.app
+
+# introcs-specific
+zzz*.*
+zzz/
+trash/
+.DS_Store
+note.md
