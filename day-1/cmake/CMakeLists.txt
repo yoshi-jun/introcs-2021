@@ -1,0 +1,5 @@
+project(zlib-read-write CXX)
+add_executable(zlib-read.exe zlib-read.cpp)
+target_link_libraries(zlib-read.exe z)
+add_executable(zlib-write.exe zlib-write.cpp)
+target_link_libraries(zlib-write.exe z)
