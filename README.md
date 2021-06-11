@@ -1,7 +1,5 @@
 # Introduction to Computer Science 2021
 
-[TOC]
-
 ## スケジュール
 
 - [x] 1. 5月18日(火) 13:00--14:30 オリエンテーリング
