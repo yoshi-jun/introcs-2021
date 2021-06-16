@@ -1,10 +1,12 @@
-CXX = g++
-
+# CXX = clang++
 # CXXFLAGS := -Wall -ansi -pedantic -O2 とほぼ同義だが
 # CXXFLAGS := $(CXXFLAGS) -march=pentium
 # ↑こういった自己参照が可能
-CXXFLAGS = -Wall -ansi -pedantic -O2
-# CPPFLAGS = -DLINUX
+CXXFLAGS = -Wall -pedantic -O2
+ifeq ($(CXX), g++)
+	CXXFLAGS += -ansi
+endif
+# CPPFLAGS = -DDEBUG
 
 .PHONY: all clean
 
