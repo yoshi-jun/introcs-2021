@@ -2,8 +2,7 @@
 # CXXFLAGS := -Wall -ansi -pedantic -O2 とほぼ同義だが
 # CXXFLAGS := $(CXXFLAGS) -march=pentium
 # ↑こういった自己参照が可能
-CXXFLAGS = -std=c++11 -O2 -fPIC
-CPPFLAGS = -Wall -ansi -pedantic
+CXXFLAGS = -std=c++11 -fPIC -Wall -pedantic -O2 
 # CPPFLAGS += -DDEBUG
 
 .PHONY: all clean
