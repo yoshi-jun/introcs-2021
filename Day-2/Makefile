@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -fPIC -Wall -pedantic -O2
 .PHONY: all clean
 
 all: bytelen_bitlen_types.exe max_min_types.exe enum_typedef.exe \
-	vector_main.exe zoo_main.exe
+	vector_main.exe
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
@@ -17,13 +17,7 @@ bytelen_bitlen_types.o: bytelen_bitlen_types.cpp
 enum_typedef.o: enum_typedef.cpp
 max_min_types.o: max_min_types.cpp
 vector_main.o: vector_main.cpp
-zoo_main.o: zoo_main.cpp
 ThreeVector.o: ThreeVector.cpp ThreeVector.h
-Zoo.o: Zoo.cpp Zoo.h Animal.h
-Animal.o: Animal.cpp Animal.h
-Tiger.o: Tiger.cpp Tiger.h Animal.h
-Donkey.o: Donkey.cpp Donkey.h Animal.h
-Giraffe.o: Giraffe.cpp Giraffe.h Animal.h
 
 %.exe:
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
@@ -32,7 +26,6 @@ bytelen_bitlen_types.exe: bytelen_bitlen_types.o
 enum_typedef.exe: enum_typedef.o
 max_min_types.exe: max_min_types.o
 vector_main.exe: vector_main.o ThreeVector.o
-zoo_main.exe: zoo_main.o Zoo.o Animal.o Tiger.o Donkey.o Giraffe.o
 
 clean:
 	rm -f *~ *.o a.out core *.exe file.out
