@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
   }
 #else
   // C++98
-  for (std::map<std::string, double>::iterator itr = dict_particle_mass.begin(); itr != dict_particle_mass.end(); ++itr) {
+  for (std::map<std::string, double>::iterator itr = dict_particle_mass.begin(); itr != dict_particle_mass.end(); itr++) {
     std::cout << "[C++98] " << itr->first << ": " << itr->second / MeV << " MeV" << std::endl;
   }
 #endif

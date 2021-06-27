@@ -19,7 +19,7 @@ int add_nums_va(int num, ...) {
   int result = 0;
   std::va_list args;
   va_start(args, num);
-  for (int i = 0; i < num; ++i) {
+  for (int i = 0; i < num; i++) {
     result += va_arg(args, int);
   }
   va_end(args);
