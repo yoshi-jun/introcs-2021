@@ -8,8 +8,8 @@ AC_INIT(
   [go.iwai@kek.jp]
 )
 AM_INIT_AUTOMAKE([foreign])
-AC_CONFIG_SRCDIR([zlib-read.cpp])
-AC_CONFIG_SRCDIR([zlib-write.cpp])
+AC_CONFIG_SRCDIR([zlib-read.cxx])
+AC_CONFIG_SRCDIR([zlib-write.cxx])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.

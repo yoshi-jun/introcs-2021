@@ -616,8 +616,8 @@ PACKAGE_STRING='zlib-read-write 1.2.3'
 PACKAGE_BUGREPORT='go.iwai@kek.jp'
 PACKAGE_URL=''
 
-ac_unique_file="zlib-read.cpp"
-ac_unique_file="zlib-write.cpp"
+ac_unique_file="zlib-read.cxx"
+ac_unique_file="zlib-write.cxx"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stddef.h>

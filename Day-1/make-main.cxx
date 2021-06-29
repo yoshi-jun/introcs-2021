@@ -1,4 +1,3 @@
-// $Id: main.cc,v 1.3 2004/11/28 12:48:37 iwai Exp $
 // inc01.h に依存している
 #include "make-inc1.h"
 

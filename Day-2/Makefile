@@ -13,11 +13,15 @@ all: bytelen_bitlen_types.exe max_min_types.exe enum_typedef.exe \
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-bytelen_bitlen_types.o: bytelen_bitlen_types.cpp
-enum_typedef.o: enum_typedef.cpp
-max_min_types.o: max_min_types.cpp
-vector_main.o: vector_main.cpp
 ThreeVector.o: ThreeVector.cpp ThreeVector.h
+
+%.o: %.cxx
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+bytelen_bitlen_types.o: bytelen_bitlen_types.cxx
+enum_typedef.o: enum_typedef.cxx
+max_min_types.o: max_min_types.cxx
+vector_main.o: vector_main.cxx
 
 %.exe:
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^

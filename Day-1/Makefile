@@ -10,15 +10,19 @@ endif
 
 .PHONY: all clean
 
-all: hello.exe main.exe staticmain.exe sharedmain.exe debug.exe none-debug.exe make-main.exe program-0.1.0.exe program-0.2.0.exe
+all: hello.exe main.exe \
+	staticmain.exe sharedmain.exe \
+	debug.exe none-debug.exe \
+	make-main.exe \
+	program-0.1.0.exe program-0.2.0.exe
 
-hello.exe: hello.cpp
+hello.exe: hello.cxx
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ $^
 
 main.exe: add.o echo.o main.o
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ $^
 
-main.o: main.cpp prototypesdef.h
+main.o: main.cxx prototypesdef.h
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ -c $<
 
 add.o: add.cpp
@@ -39,7 +43,7 @@ pic-add.o: add.cpp
 pic-echo.o: echo.cpp
 	$(CXX) $(CXXFLAGS) -fPIC $(CPPFLAGS) -I. -o $@ -c $<
 
-pic-main.o: main.cpp prototypesdef.h
+pic-main.o: main.cxx prototypesdef.h
 	$(CXX) $(CXXFLAGS) -fPIC $(CPPFLAGS) -I. -o $@ -c $<
 
 libsharedlib.so: pic-add.o pic-echo.o
@@ -48,10 +52,10 @@ libsharedlib.so: pic-add.o pic-echo.o
 sharedmain.exe: pic-main.o libsharedlib.so
 	$(CXX) -I. -o $@ $< -L. -lsharedlib
 
-debug.exe: debug.cpp
+debug.exe: debug.cxx
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -DDEBUG -o $@ $^
 
-none-debug.exe: debug.cpp
+none-debug.exe: debug.cxx
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ $^
 
 # make-main.exe は
@@ -63,10 +67,10 @@ none-debug.exe: debug.cpp
 make-main.exe: make-main.o make-func1.o make-func2.o
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ $^
 
-# make-main.o は make-main.cpp と
+# make-main.o は make-main.cxx と
 # make-inc1.h に依存している
-make-main.o: make-main.cpp make-inc1.h
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ -c make-main.cpp
+make-main.o: make-main.cxx make-inc1.h
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ -c make-main.cxx
 
 # make-func1.o は
 # make-func1.cpp make-inc1.h make-inc2.h
@@ -80,10 +84,10 @@ make-func1.o: make-func1.cpp make-inc1.h make-inc2.h
 make-func2.o: make-func2.cpp make-inc2.h make-inc3.h
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -o $@ -c make-func2.cpp
 
-program-0.1.0.exe: program-0.1.0.cpp
+program-0.1.0.exe: program-0.1.0.cxx
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ $^
 
-program-0.2.0.exe: program-0.2.0.cpp
+program-0.2.0.exe: program-0.2.0.cxx
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ $^
 
 clean:
