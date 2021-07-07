@@ -1,6 +1,14 @@
-void ReadTree(const TString &ifile = "B5ntuple_e+.root") {
-  TFile* f = new TFile("B5ntuple_e+.root");
-  TTree* t = dynamic_cast<TTree*>(f->Get("B5"));
+#include <iostream>
+#include <vector>
+
+#include "TString.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TBranch.h"
+
+void ReadTree(const TString& ifile = "B5ntuple_e+.root") {
+  auto f = new TFile(ifile.Data());
+  auto t = f->Get<TTree>("B5");
 
   Int_t Dc1Hits, Dc2Hits;
   Double_t ECEnergy, HCEnergy, Time1, Time2;
@@ -28,11 +36,11 @@ void ReadTree(const TString &ifile = "B5ntuple_e+.root") {
 
     Long64_t tentry = t->LoadTree(i);
     brECEV->GetEntry(tentry);
-    for (auto eci = 0; eci < ECEnergyVector->size(); eci++) {
+    for (std::size_t eci = 0; eci < ECEnergyVector->size(); eci++) {
       std::cout << "ECEnergyVector[" << eci << "]=" << (*ECEnergyVector)[eci] << std::endl;
     }
     brHCEV->GetEntry(tentry);
-    for (auto hci = 0; hci < HCEnergyVector->size(); hci++) {
+    for (std::size_t hci = 0; hci < HCEnergyVector->size(); hci++) {
       std::cout << "HCEnergyVector[" << hci << "]=" << (*HCEnergyVector)[hci] << std::endl;
     }
   }
