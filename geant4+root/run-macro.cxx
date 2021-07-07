@@ -1,4 +1,5 @@
 #include "MyMacro.C"
+// c++ run-macro.cxx $(root-config --cflags --libs)
 
 int main(int argc, char* argv[]) {
   auto ofile = "mymacro.root";
