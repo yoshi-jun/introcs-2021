@@ -1,12 +1,16 @@
+#include <iostream>
 #include <vector>
 
+#include "TString.h"
 #include "TFile.h"
 #include "TTree.h"
+#include "TBranch.h"
 #include "TTreeReader.h"
 #include "TTreeReaderValue.h"
 #include "TH2I.h"
 #include "TCanvas.h"
 #include "TStyle.h"
+#include "TSystem.h"
 
 void WithTreeReader(const TString &ifile = "B5ntuple_e+.root") {
   TFile* f = new TFile(ifile.Data());
@@ -50,7 +54,7 @@ void WithTreeReader(const TString &ifile = "B5ntuple_e+.root") {
               << "/Time2=" << *Time2
               << std::endl;
     SumECEnergy += *ECEnergy;
-    for (auto copyNo = 0; copyNo < ECEnergyVector->size(); copyNo++) {
+    for (std::size_t copyNo = 0; copyNo < ECEnergyVector->size(); copyNo++) {
       // B5CellParameterisation.cc
       // for (auto copyNo = 0; copyNo < kNofEmCells; copyNo++) {
       //   auto column = copyNo / kNofEmRows;
