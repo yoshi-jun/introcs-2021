@@ -13,7 +13,7 @@
 #include "TSystem.h"
 
 void WithTreeReader(const TString &ifile = "B5ntuple_e+.root") {
-  TFile* f = new TFile(ifile.Data());
+  auto f = new TFile(ifile.Data());
   TTreeReader reader("B5", f);
 
   TTreeReaderValue<Int_t> Dc1Hits(reader, "Dc1Hits");
@@ -33,12 +33,12 @@ void WithTreeReader(const TString &ifile = "B5ntuple_e+.root") {
   // B5DetectorConstruction.cc
   // auto emCalorimeterSolid
   //   = new G4Box("EMcalorimeterBox",1.5*m,30.*cm,15.*cm);
-  TCanvas *cv = new TCanvas("cv", "EMCal (CsI)", 1200, 240);
+  auto cv = new TCanvas("cv", "EMCal (CsI)", 1200, 240);
   cv->ToggleEventStatus();
   cv->SetGrid();
   gStyle->SetGridStyle(kSolid);
 
-  TH2I *h = new TH2I("hist", "EMCal (CsI)", kNofEmColumns, 0.0, static_cast<Double_t>(kNofEmColumns), kNofEmRows, 0, static_cast<Double_t>(kNofEmRows));
+  auto h = new TH2I("hist", "EMCal (CsI)", kNofEmColumns, 0.0, static_cast<Double_t>(kNofEmColumns), kNofEmRows, 0, static_cast<Double_t>(kNofEmRows));
   h->SetNdivisions(kNofEmColumns, "X");
   h->SetNdivisions(kNofEmRows, "Y");
   h->Draw("COLZ");
