@@ -1,4 +1,4 @@
-# Work with Geant4 and ROOT 2021
+# Work with Geant4 and ROOT
 
 Contains some code used in the guide below:
 
