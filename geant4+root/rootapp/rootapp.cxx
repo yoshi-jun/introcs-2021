@@ -1,16 +1,15 @@
-#include <iostream>
-#include "G4RunManager.hh"
+#include "G4RunManagerFactory.hh"
 #ifdef HAVE_ROOT
 #include "TROOT.h"
 #include "TSystem.h"
 #endif
 
 int main() {
-  G4RunManager* runManager = new G4RunManager();
-  delete runManager;
+  auto* runManager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::Default);
 #ifdef HAVE_ROOT
-  std::cout << "gROOT->GetVersion()=" << gROOT->GetVersion() << std::endl;
+  G4cout << "gROOT->GetVersion()=" << gROOT->GetVersion() << G4endl;
   gSystem->Print();
 #endif
+  delete runManager;
   return 0;
 }
