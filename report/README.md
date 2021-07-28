@@ -1,20 +1,28 @@
-# 計算科学概論レポート
+# 計算科学概論課題
 
-- 学籍番号
-- 氏名
-- 専攻科名、学年
-- タイトル「〜」
-- 内容...
-- 成績入力の〆切は9月3日(金)
-- 8月2日(月) 以降、担当教員が <https://cplan-web.soken.ac.jp/portal/> からWeb成績登録で入力
-- レポート提出〆切：遅くとも8月27日(金)、もう1週早めて8月20日(金)でもいいくらい
+[`geant4`](geant4) 配下のコードを完成させよ。現在、空気で満たされた 10m x 10m x 10m の World Volume が定義されているだけ。
 
-## 案
+## 必須課題
 
-- LaTeX で作成してもらうか
-- `CMakeLists.txt` を用意して `cmake && make` で出来るかっこうで
-  - まあ `Makefile` のみでもいいか
-- ジオメトリの定義くらいはしてもらうか
-  - 水アレイを配置して lateral profile を TTree で保存
-- 粒子種別やエネルギーによる違いについてレポート
-- GitHub でフォークして report 配下で作業して、出来たら Pull Request (PR) で提出
+- このリポジトリをフォークせよ
+- ビーム方向 (Z) に 1 cm 厚の水板 (40cm x 40cm) を100枚並べて配置せよ
+  - セットアップ図がわかるように全体像を保存し、後述するレポートに貼り付けて提出すること
+- 水板を Active Volume (Sensitive Detector) として定義し、登録せよ
+  - 少なくとも Copy Number とそれに対応するエネルギー損失量を出力すること
+  - 出力に対応する Hit クラスを作成せよ
+- EventAction::EndOfEventAction を実装し Hit 情報を元に Ntuple に Fill せよ
+- PrimaryGeneratorAction::PrimaryGeneratorAction では 100 MeV の Proton を Z 方向に入射するように実装してある。1000 イベント生成し、保存された Ntuple データを読んで 深さ方向 (Z) のエネルギー分布をプロットせよ
+  - 後述するレポートに貼り付けて提出すること
+- レポートは [`texdoc`](texdoc) 内に作成せよ
+  - LaTeX で記述すること、提出物はソースのみで良い、PDF は不要
+- Pull Request の発行をもって提出とする
+- 〆切: 8月29日(日)
+
+## 選択課題
+
++2点以上で優とする。
+
+- [`texdoc`](texdoc) に `CMakeLists.txt` を用意して提出せよ (+1)
+- 水板 (40cm x 40cm x 1cm) は G4PVPlacement 以外で配置せよ (+1)
+- Sensitive Detector からの出力は TTree オブジェクトとして `TFile` を使用して保存せよ、またそのように [`CMakeLists.txt`](geant4/CMakeLists.txt) を編集せよ。 (+2)
+- その他、工夫点があればレポート内に記載せよ、評価に値するものであれば加点する。
