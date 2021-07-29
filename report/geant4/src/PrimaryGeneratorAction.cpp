@@ -44,7 +44,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   fParticleGun  = new G4ParticleGun(nofParticles);
   
   // default particle kinematics
-  fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-4.*m));
+  fParticleGun->SetParticlePosition(G4ThreeVector(0.,0.,-50.*cm));
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
   fParticleGun->SetParticleEnergy(100.*MeV);
   fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle("proton"));
