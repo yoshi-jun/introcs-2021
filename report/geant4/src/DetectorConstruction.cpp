@@ -24,6 +24,7 @@
 // ********************************************************************
 //
 #include "DetectorConstruction.h"
+#include "WaterPhantomSD.h"
 
 #include "G4Material.hh"
 #include "G4Element.hh"
@@ -90,12 +91,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     = new G4PVPlacement(0,G4ThreeVector(),worldLogical,"worldPhysical",0,
                         false,0,checkOverlaps);
 
-  G4double phantom_tickness = 1.0 * cm;
-  auto phantomSolid = new G4Box("phantomBox", 40. / 2. * cm, 40. / 2. * cm, phantom_tickness/2.);
+  G4double phantom_thickness = 1.0 * cm;
+  auto phantomSolid = new G4Box("phantomBox", 40./2. * cm, 40./2. * cm, phantom_thickness/2.);
   auto phantomLogical = new G4LogicalVolume(phantomSolid, water, "phantomLogical");
 
-  // G4int nz = 100;
-  // for (G4int z = 0; z < nz; z++) {
+  // for (G4int z = 0; z < WaterPhantomSD::kNofCells; z++) {
   //   auto posz = 0 + z * 1.0*cm;
   //   new G4PVPlacement(0,                               //no rotation
   //                     G4ThreeVector(0., 0., posz), //at (0,0,0)
@@ -108,7 +108,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // }
 
   // As a SD
-  // auto phantomSD = new PhantomSD(SDname = "/phantomSD");
+  // auto phantomSD = new WaterPhantomSD("/phantomSD");
   // G4SDManager::GetSDMpointer()->AddNewDetector(phantomSD);
   // phantomLogical->SetSensitiveDetector(phantomSD);
 
