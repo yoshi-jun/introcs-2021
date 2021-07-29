@@ -25,6 +25,7 @@
 //
 
 #include "EventAction.h"
+#include "WaterPhantomHit.h"
 
 #include "G4Event.hh"
 #include "G4RunManager.hh"
@@ -70,7 +71,24 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
- 
+
+
+  auto collections = event->GetHCofThisEvent();
+  if (!collections) {
+    return;
+  }
+  if (collections->GetNumberOfCollections() > 0) {
+    auto hc = collections->GetHC(0); // WaterPhantomHitsCollection = G4THitsCollection<WaterPhantomHit>
+    if (!hc) {
+      return;
+    }
+    for (unsigned int i = 0; i < hc->GetSize(); i++) {
+      auto hit = static_cast<WaterPhantomHit*>(hc->GetHit(i));
+      hit->Print();
+
+      //! Fill Ntuple here
+    }
+  }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
