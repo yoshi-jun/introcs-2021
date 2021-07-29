@@ -44,6 +44,7 @@ class G4GenericMessenger;
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
+
   public:
     DetectorConstruction();
     virtual ~DetectorConstruction();
