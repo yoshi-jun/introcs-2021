@@ -27,6 +27,7 @@
 
 #include "WaterPhantomSD.h"
 #include "WaterPhantomHit.h"
+#include "RunAction.h"
 
 #include "G4HCofThisEvent.hh"
 #include "G4TouchableHistory.hh"
@@ -76,10 +77,16 @@ G4bool WaterPhantomSD::ProcessHits(G4Step*step, G4TouchableHistory*)
   auto physical = touchable->GetVolume();
   auto copyNo = physical->GetCopyNo();
   
+  G4cout << copyNo << ":" << edep << G4endl;
+  
   auto hit = (*fHitsCollection)[copyNo];
 
   // add energy deposition
   hit->AddEdep(edep);
+
+  //hit->SetEdep_hit(edep);
+  
+  //hit->SetEdep_hit(edep);
 
   return true;
 }

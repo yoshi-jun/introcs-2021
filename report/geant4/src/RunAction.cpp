@@ -43,12 +43,13 @@ RunAction::RunAction(EventAction* eventAction)
   // Create the generic analysis manager
   // The choice of analysis technology is done according to the file extension
   auto analysisManager = G4AnalysisManager::Instance();
+  analysisManager->SetActivation(true);
   analysisManager->SetVerboseLevel(1);
 
   // Default settings
   analysisManager->SetNtupleMerging(true);
      // Note: merging ntuples is available only with Root output
-  analysisManager->SetFileName("IntroCS");
+  analysisManager->SetFileName("/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/test.root");
      // If the filename extension is not provided, the default file type (root)
      // will be used for all files specified without extension.
   // analysisManager->SetDefaultFileType("xml");
@@ -60,12 +61,13 @@ RunAction::RunAction(EventAction* eventAction)
   if ( fEventAction ) {
     analysisManager->CreateNtuple("IntroCS", "Hits");
     // analysisManager                               // column Id = 6
-    //     ->CreateNtupleDColumn("Edep", fEventAction->GetEdep()); // column Id = 0
+    //analysisManager->CreateNtupleDColumn("Edep", fEventAction->GetEdep()); // column Id = 0
+    analysisManager->CreateNtupleDColumn("Edeps");
     analysisManager->FinishNtuple();
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "tree");
+  //analysisManager->SetNtupleFileName(0, "tree");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -100,6 +102,8 @@ void RunAction::EndOfRunAction(const G4Run* /*run*/)
   auto analysisManager = G4AnalysisManager::Instance();
   analysisManager->Write();
   analysisManager->CloseFile();
+
+  //G4cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~called Fclose~~~~~~~~~~~~~~~~"<<G4endl;
 
 }
 

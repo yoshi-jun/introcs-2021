@@ -95,22 +95,22 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   auto phantomSolid = new G4Box("phantomBox", 40./2. * cm, 40./2. * cm, phantom_thickness/2.);
   auto phantomLogical = new G4LogicalVolume(phantomSolid, water, "phantomLogical");
 
-  // for (G4int z = 0; z < WaterPhantomSD::kNofCells; z++) {
-  //   auto posz = 0 + z * 1.0*cm;
-  //   new G4PVPlacement(0,                               //no rotation
-  //                     G4ThreeVector(0., 0., posz), //at (0,0,0)
-  //                     phantomLogical,                  //its logical volume
-  //                     "phantomPhysical",               //its name
-  //                     worldLogical,                    //its mother  volume
-  //                     false,                           //no boolean operation
-  //                     z,                          //copy number
-  //                     checkOverlaps);                  //overlaps checking
-  // }
+   for (G4int z = 0; z < WaterPhantomSD::kNofCells; z++) {
+     auto posz = 0 + z * 1.0*cm;
+     new G4PVPlacement(0,                               //no rotation
+                       G4ThreeVector(0., 0., posz), //at (0,0,0)
+                       phantomLogical,                  //its logical volume
+                       "phantomPhysical",               //its name
+                       worldLogical,                    //its mother  volume
+                       false,                           //no boolean operation
+                       z,                               //copy number
+                       checkOverlaps);                  //overlaps checking
+   }
 
   // As a SD
-  // auto phantomSD = new WaterPhantomSD("/phantomSD");
-  // G4SDManager::GetSDMpointer()->AddNewDetector(phantomSD);
-  // phantomLogical->SetSensitiveDetector(phantomSD);
+   auto phantomSD = new WaterPhantomSD("/phantomSD");
+   G4SDManager::GetSDMpointer()->AddNewDetector(phantomSD);
+   phantomLogical->SetSensitiveDetector(phantomSD);
 
   // visualization attributes ------------------------------------------------
   auto visAttributes = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));

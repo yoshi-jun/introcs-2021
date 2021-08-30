@@ -51,7 +51,9 @@ EventAction::EventAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 EventAction::~EventAction()
-{}
+{
+
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -87,6 +89,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
       hit->Print();
 
       //! Fill Ntuple here
+
+      analysisManager->FillNtupleDColumn(0,10*i);//hit->GetEdep_hit(i));
+      
+      analysisManager->AddNtupleRow();
+
+      //analysisManager->FillNtupleDColumn(1,55);
     }
   }
 }
