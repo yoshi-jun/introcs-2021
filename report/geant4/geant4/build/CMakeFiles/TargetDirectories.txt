@@ -1,0 +1,8 @@
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/install/strip.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/install/local.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/install.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/list_install_components.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/rebuild_cache.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/edit_cache.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/IntroCS.dir
+/home/test-man/Work/geant4/tutorial/homework_introcs/introcs-2021/report/geant4/build/CMakeFiles/introcs.exe.dir
